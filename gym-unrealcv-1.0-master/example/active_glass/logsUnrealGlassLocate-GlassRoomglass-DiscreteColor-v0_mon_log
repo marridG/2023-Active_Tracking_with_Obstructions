@@ -1,0 +1,24 @@
+2022-08-25 10:31:17,863 : env: UnrealGlassLocate-GlassRoomglass-DiscreteColor-v0
+2022-08-25 10:31:17,864 : num_episodes: 3
+2022-08-25 10:31:17,864 : load_model_dir: None
+2022-08-25 10:31:17,864 : load_tracker: /data3/songmingyu/glass/gym-unrealcv-1.0/example/active_glass/ckpt/all-best-1441.dat
+2022-08-25 10:31:17,864 : load_target: None
+2022-08-25 10:31:17,864 : log_dir: /data3/songmingyu/glass/gym-unrealcv-1.0/example/active_glass/logs
+2022-08-25 10:31:17,864 : csv: None
+2022-08-25 10:31:17,864 : render: False
+2022-08-25 10:31:17,864 : network: cnn-lstm
+2022-08-25 10:31:17,864 : stack_frames: 1
+2022-08-25 10:31:17,864 : seed: 1
+2022-08-25 10:31:17,864 : gpu_id: 0
+2022-08-25 10:31:17,864 : obs: img
+2022-08-25 10:31:17,864 : single: True
+2022-08-25 10:31:17,864 : clip_reward: False
+2022-08-25 10:31:17,864 : gray: False
+2022-08-25 10:31:17,865 : crop: False
+2022-08-25 10:31:17,865 : inv: False
+2022-08-25 10:31:17,865 : flip: False
+2022-08-25 10:31:17,865 : rescale: False
+2022-08-25 10:31:17,865 : input_size: 80
+2022-08-25 10:31:17,865 : rnn_out: 128
+2022-08-25 10:31:17,865 : intrinsic_reward: False
+2022-08-25 10:34:43,234 : El, 200, R, [0.002], R_mean: [0.0946715], R_std: [0.06580217], EL_mean: 200.00, EL_std 0.00, R_step: [0.00047336], S_rate: 0.0

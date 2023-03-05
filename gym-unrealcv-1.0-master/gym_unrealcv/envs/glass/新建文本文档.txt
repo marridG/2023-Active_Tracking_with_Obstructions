@@ -1,0 +1,42 @@
+def reward_map_supervise(self, data1):
+        reward = 0
+        # with open(self.out_fn, "r") as f:
+        #     lines = f.readlines()
+        #     for line in lines:
+        #         line = line.strip().strip('[').strip(']').split(' ')
+        #         line = list(map(float,line))
+        #         data1.append(line)
+        #     f.close()
+        data1 = np.array(data1)/self.pixelscale3d
+        # env_map = np.zeros((int(self.map_x/self.pixelscale3d), int(self.map_y/self.pixelscale3d), int(self.map_h/self.pixelscale3d)))
+        for i in range(int(len(data1)/2)):
+            i *= 2
+            x = np.array([data1[i][0], data1[i+1][0]]) - self.map_scale[0]/self.pixelscale3d
+            y = -np.array([data1[i][1], data1[i+1][1]]) - self.map_scale[2]/self.pixelscale3d
+            z = np.array([data1[i][2], data1[i+1][2]])
+            points = [] # points in this line
+            line_map = np.zeros((int(self.map_x/self.pixelscale3d), int(self.map_y/self.pixelscale3d), int(self.map_h/self.pixelscale3d)))
+            points = np.array(points)
+            line_lengh = np.linalg.norm(data1[i]-data1[i+1])
+            if line_lengh>self.threshold_len_min/self.pixelscale3d \
+                and line_lengh<self.threshold_len_max/self.pixelscale3d: # leave points of normal length
+                point_num = int(line_lengh*1.2) # 1.2 can make sure every 3Dpixel has at least one point in it
+                points = np.expand_dims(np.linspace(x[0],x[1],point_num), axis=0)
+                points = np.concatenate([points, np.expand_dims(np.linspace(y[0],y[1],point_num), axis=0)], axis=0)
+                points = np.concatenate([points, np.expand_dims(np.linspace(z[0],z[1],point_num), axis=0)], axis=0)
+                points =  np.around(points.transpose())
+            for j in range(points.shape[0]):
+                px, py, pz = points[j].astype('int')
+                if px>=0 and px< int(self.map_x/self.pixelscale3d) \
+                    and py>=0 and py< int(self.map_y/self.pixelscale3d) \
+                    and pz>=0 and pz< int(self.map_h/self.pixelscale3d) \
+                    and line_map[px][py][pz] == 0:
+                    line_map[px][py][pz] = 1
+            self.lines_map += line_map
+        env_map = self.lines_map.sum(axis=2)
+        threshold = 1 #env_map.max()/self.threshold_pos
+        label_p = self.label_map * (env_map>=threshold) # and  
+        label_n = (self.label_map==0) * (env_map<threshold) * (env_map>0) # and
+        reward = (label_p!=0).sum()/(self.label_map!=0).sum()- 0.01*(label_n==True).sum()
+        # reward = max(reward, -100)
+        return reward

@@ -1,0 +1,81 @@
+{
+	"env_name": "trckingroom_clean",
+	"env_bin": "/LinuxNoEditor/trackingroom_clean/Binaries/Linux/trackingroom_clean",
+	"out_fn": "./example/glass/out.ply",
+	"threshold_len_min": 0,
+	"threshold_len_max": 10000,
+	"pixelscale3d": 40,
+	"threshold_pos":2,
+	"throshold_near":800,
+	"reward_others":-1,
+	"reward_negative":0.01,
+	"cam_id": 0,
+	"imgs_dir": "textures",
+	"show_step":0,
+	"height": 200,
+	"pitch": 0,
+	"max_steps": 200,
+	"trigger_th": 0.6,
+	"reward_th": 0.1,
+	"reward_factor": 10,
+	"collision_th": 50,
+	"waypoint_th": 200,
+	"targets": {
+		"glass":[
+		"my_glass1","my_glass2","my_glass3",
+		"my_glass4","my_glass5","my_glass6"
+	]},
+	"reset_area":[-1890, 930, -1260, 1660, 0, 300],
+	"resetlist_num":0,
+	"reset_list": [
+		[0],
+		[0],
+		[0],
+		[0],
+		[0],
+		[0]
+	],
+	"test_xy": [
+		[-106.195,   437.424],
+		[  27.897,  -162.437],
+		[  10.832,   135.126],
+		[  67.903,    26.995],
+		[ -23.558,  -187.354],
+		[ -80.312,   254.579]
+	],
+	"discrete_actions": [
+		[50,0,0],
+		[0,20,0],
+		[0,-20,0]
+	],
+	"continous_actions": {
+		"high": [100,   45, 1],
+		"low":  [  0,  -45, 0]
+	},
+	"glasses":[
+		"my_glass1","my_glass2","my_glass3",
+		"my_glass4","my_glass5","my_glass6"
+
+	],
+	"glasses0":[
+		"bp_glass0","bp_glass1","bp_glass2_4",
+		"bp_glass3","bp_glass4","bp_glass5"
+
+	],
+	"objects_list": [
+		"cube6", "cube7", "cube8",
+		"cylinder6", "cylinder7", "cylinder8"
+	],
+	"objects_list_useless": [
+		"cube1", "cube2_7", "cube3", "cube4", "cube5",
+		"sphere1", "sphere2", "sphere3", "sphere4", "sphere5",
+		"cylinder1", "cylinder2", "cylinder3", "cylinder4", "cylinder5",
+		"cone1", "cone2", "cone3", "cone4", "cone5"
+	],
+    "backgrounds": [
+      "FLOOR","wall1","wall2","wall3","wall4"
+    ],
+    "lights": [
+      "light1", "light2", "light3", "light4"
+    ]
+}
